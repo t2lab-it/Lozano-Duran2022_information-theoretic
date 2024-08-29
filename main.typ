@@ -131,6 +131,7 @@ $bold(Q)$がとりうる範囲$D$を$N_q$個に分割し，それぞれの領域
 この時，$D_i$は$D$の集合とみなせて，
 $ D = {D_1, D_2, dots, D_N_q} $
 と書ける．
+#block(fill: red.transparentize(50%))[領域$D_i$は空間的な分割?なんの分割か?]
 それぞれ$D_i$は$i!=j$において，互いに同じ領域を持たないように取る．
 $ D_i and D_j = nothing $
 もし，$bold(q)^n$が領域$D_i$に含まれる時，その確率は
@@ -150,7 +151,9 @@ $ H(bold(Q)^(n+1)) = H(bold(f)(bold(Q)^n)) <= H(bold(Q)^n) $
 また，支配方程式が存在するので，$t_n$の時の確率分布$p(bold(q)^n)$を知っていれば，次の時刻$t_(n+1)$での確率分布$p(bold(q)^(n+1))$を計算することも可能である．
 これを，転送作用素の演算子$bb(P)$を使って，
 $ p(bold(q)^(n+1)) = bb(P)[p(bold(q)^n)] $
-と記述する．これを用いれば，$bold(Q)^n$に対する$bold(Q)^(n+1)$の条件付きエントロピーは，
+と記述する．
+#block(fill: red.transparentize(50%))[転送作用素とは?確率を求める関数という認識?]
+これを用いれば，$bold(Q)^n$に対する$bold(Q)^(n+1)$の条件付きエントロピーは，
 $
 H(bold(Q)^(n+1)|bold(Q)^n) &= sum -p(bold(q)^(n+1),bold(q)^n) log_2[p(bold(q)^(n+1)|bold(q)^n)]\
  &= sum -p(bold(q)^(n+1)|bold(q)^n)p(bold(q)^n) log_2[p(bold(q)^(n+1)|bold(q)^n)]\
@@ -158,6 +161,7 @@ H(bold(Q)^(n+1)|bold(Q)^n) &= sum -p(bold(q)^(n+1),bold(q)^n) log_2[p(bold(q)^(n
 &= 0
 $
 となり，条件付きエントロピーは0となる．
+#block(fill: red.transparentize(50%))[式(29)から，式(30)の$p(bold(q)^(n+1)|bold(q)^n) = bb(P)[p(bold(q)^n|bold(q)^n)]$が導かれるのは，数学的にどういう原理か？]
 これは，$bold(Q)^n$を知っているとき，$bold(Q)^(n+1)$の不確実性は全くないことを表している．\ \
 もし，逆関係
 $ bold(Q)^n = bold(f)^(-1) H(bold(Q)^n) $
@@ -209,6 +213,7 @@ $ H(Q_j^(n+1)|bold(Q)_(cancel(i))^n) >= 0 $
 実際に，移動エントロピーの一般式は
 $ T_(bold(i) arrow.r j) = sum_(k=0)^(M-1) sum_(bold(i)(k) in C_k) (-1)^k H(Q_j^(n+1)|bold(Q)_(cancel(i)(k))^n) $<trans_eq1>
 となる．
+#block(fill: red.transparentize(50%))[式(41)から式(42)の導出は?(式(41)およびベン図から)概念は理解できるが，どのようにしてこの式が組み立てられるのかがわからない．この式の一般性を証明できない．]
 ここで，$bold(i)(k)$は，$bold(i)$のうち，$k$個の要素を抜いたものである．
 この集合が$C_k$である．
 例えば，$bold(i) = [1,2]$であれば，次の組み合わせとなる．
@@ -235,11 +240,13 @@ $<trans_1_2_3>
   image("figs/fig3.png",width: 70%)
 )
 上のように，それぞれの移動エントロピーは重複しない．
+#block(fill: red.transparentize(50%))[一般性の証明はどのように?]
 また，移動エントロピーは，条件付き相互情報量で表現することが可能である．
 $ T_(bold(i) arrow.r j) = I(Q_j^(n+1):Q_(j_1)^n:Q_(j_2)^n:dots:Q_(j_M)^n|bold(Q)_(bold(cancel(i)))^n) $
 この条件付き相互情報量は，以下の性質がある．
 $ I(Q_j^(n+1):Q_(j_1)^n:Q_(j_2)^n:dots:Q_(j_M)^n|bold(Q)_(bold(cancel(i)))^n) = I&(Q_j^(n+1):Q_(j_1)^n:Q_(j_2)^n:dots:Q_(j_(M-1))^n|bold(Q)_(bold(cancel(i)))^n) \
 &- I(Q_j^(n+1):Q_(j_1)^n:Q_(j_2)^n:dots:Q_(j_(M-1))^n|[Q_(i_M)^n,bold(Q)_(bold(cancel(i)))^n]) $
+#block(fill: red.transparentize(50%))[要素が3つの場合は視覚的に確認済み．この式の一般性の証明はどのように?]
 また，$Z$に対する$X$と$Y$の相互情報量は，次式になる．
 $
 I(X:Y|Z)
@@ -342,6 +349,7 @@ $ T_([1,2,3] arrow.r 2)^Y = H&(Y_2^(n+1))\
 
 $T_(bold(i) arrow.r j)^Y$は，非負性を満たすとは限らないことに注意しなければならない．
 移動エントロピーの変数の数が奇数の場合，非負性の拘束はない．
+#block(fill: red.transparentize(50%))[証明方法?]
 
 == 情報流の最適観測状態と位相空間分割
 
