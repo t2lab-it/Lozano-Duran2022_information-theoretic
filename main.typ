@@ -391,3 +391,58 @@ $ u_i frac(partial u_i u_j, partial x_j) &= u_i u_i underbrace(frac(partial u_j,
 &= u_j frac(partial,partial x_j)(frac(u_i u_i, 2))\
 &= u_j frac(partial k, partial x_j) $
 */
+
+= 情報理論的SGSモデルの問題点について
+
+SGS応力を，
+$ tau_(i j)^("SGS") - 1/3 tau_(k k)^("SGS")delta_(i j) &= theta_1 macron(Delta)^2 macron(S)_(i j)sqrt(macron(S)_(m n)macron(S)_(m n)) + theta_2 macron(Delta)^2(macron(S)_(i k)macron(Omega)_(k j) - macron(Omega)_(i k)macron(S)_(k j)) $
+とモデル化する．
+このとき，$theta_1$および$theta_2$は求めるパラメータである．\
+
+乱流の統計理論で重要となる生成項を求める．
+これは，
+$ P &= (tau_(i j)^("SGS") - 1/3 tau_(k k)^("SGS")delta_(i j))macron(S)_(i j)\
+    &= [theta_1 macron(Delta)^2 macron(S)_(i j)sqrt(macron(S)_(m n)macron(S)_(m n)) + theta_2 macron(Delta)^2(macron(S)_(i k)macron(Omega)_(k j) - macron(Omega)_(i k)macron(S)_(k j))]macron(S)_(i j) $<eq:sgs_theta>
+と書ける．
+ここで，右辺第2項
+$ (macron(S)_(i k)macron(Omega)_(k j) - macron(Omega)_(i k)macron(S)_(k j))macron(S)_(i j)
+  &= underbrace(macron(S)_(i k)macron(Omega)_(k j)macron(S)_(i j), "(a)") - underbrace(macron(Omega)_(i k)macron(S)_(k j)macron(S)_(i j), "(b)")
+$<eq4_1>
+について考える．
+変形速度テンソル$macron(S)_(i j)$および回転テンソル$macron(Omega)_(i j)$は，速度勾配テンソル
+$ A_(i j) &= (partial u_i)/(partial x_j) $
+を用いて
+$ macron(S)_(i j) &= 1/2 (A_(i j) + A_(j i))\
+  macron(Omega)_(i j) &= 1/2 (A_(i j) - A_(j i))
+$
+のように記述できる．
+これを@eq4_1 右辺第1項(a)に代入すれば，
+$ macron(S)_(i k)macron(Omega)_(k j)macron(S)_(i j) &= 1/8 (A_(i k) + A_(k i))(A_(k j) - A_(j k))(A_(i j) + A_(j i))\
+  &= 1/8(A_(i k)A_(k j) - A_(i k)A_(j k) + A_(k i)A_(k j) - A_(k i)A_(j k))(A_(i j) + A_(j i))\
+  &= 1/8(underbrace(A_(i k)A_(k j)A_(i j),"(a1)") - underbrace(A_(i k)A_(j k)A_(i j),"(a2)") + underbrace(A_(k i)A_(k j)A_(i j),"(a3)") - underbrace(A_(k i)A_(j k)A_(i j),"(a4)")\
+  &+ underbrace(A_(i k)A_(k j)A_(j i),"(a5)") - underbrace(A_(i k)A_(j k)A_(j i),"(a6)") + underbrace(A_(k i)A_(k j)A_(j i),"(a7)") - underbrace(A_(k i)A_(j k)A_(j i),"(a8)"))
+$
+@eq4_1 右辺第1項(b)に代入すれば，
+$ macron(Omega)_(i k)macron(S)_(k j)macron(S)_(i j) &= 1/8 (A_(i k) - A_(k i))(A_(k j) + A_(j k))(A_(i j) + A_(j i))\
+  &= 1/8(A_(i k)A_(k j) + A_(i k)A_(j k) - A_(k i)A_(k j) - A_(k i)A_(j k))(A_(i j) + A_(j i))\
+  &= 1/8(underbrace(A_(i k)A_(k j)A_(i j),"(b1)") + underbrace(A_(i k)A_(j k)A_(i j),"(b2)") - underbrace(A_(k i)A_(k j)A_(i j),"(b3)") - underbrace(A_(k i)A_(j k)A_(i j),"(b4)")\
+  &+ underbrace(A_(i k)A_(k j)A_(j i),"(b5)") + underbrace(A_(i k)A_(j k)A_(j i),"(b6)") - underbrace(A_(k i)A_(k j)A_(j i),"(b7)") - underbrace(A_(k i)A_(j k)A_(j i),"(b8)"))
+$
+(a2), (a3), (a6), (a7)は(b2), (b3), (b6), (b7)で消去される．
+また，(a1), (a4), (a5), (a8)は(b1), (b4), (b5), (b8)と同一項である．
+よって，@eq4_1 を書き直せば，
+$ (macron(S)_(i k)macron(Omega)_(k j) - macron(Omega)_(i k)macron(S)_(k j))macron(S)_(i j)
+  &= 1/4(underbrace(A_(i k)A_(k j)A_(i j), alpha) - underbrace(A_(k i)A_(j k)A_(i j), beta) + underbrace(A_(i k)A_(k j)A_(j i), gamma) - underbrace(A_(k i)A_(j k)A_(j i), epsilon))
+$
+ここで，$epsilon$における添字$(i, j, k)$を$(j, i, k)$に入れ替えれば，
+$ A_(k i)A_(j k)A_(j i) = A_(k j)A_(i k)A_(i j) $
+となり，$alpha$と一致する．
+同様にして，$gamma$における添字$(i, j, k)$を$(k, j, i)$に入れ替えれば，
+$ A_(i k)A_(k j)A_(j i) = A_(k i)A_(i j)A_(j k) $
+となり，$beta$と一致する．
+よって，
+$ (macron(S)_(i k)macron(Omega)_(k j) - macron(Omega)_(i k)macron(S)_(k j))macron(S)_(i j) = 0 $
+となる．
+これより，@eq:sgs_theta の第二項は消去されて
+$ P &= [theta_1 macron(Delta)^2 macron(S)_(i j)sqrt(macron(S)_(m n)macron(S)_(m n))]macron(S)_(i j) $
+となり，生成項は$theta_2$に依存しない．
